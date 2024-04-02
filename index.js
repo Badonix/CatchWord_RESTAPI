@@ -19,5 +19,5 @@ mongoose
 app.use("/api/scores", scoreRoute);
 
 app.listen(PORT, () => {
-  console.log(`Listening in PORT ${PORT}`);
+  console.log(`Listening on PORT ${PORT}`);
 });
