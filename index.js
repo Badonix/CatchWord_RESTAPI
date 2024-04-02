@@ -9,17 +9,17 @@ app.use(express.json());
 const scoreRoute = require("./Routes/scores");
 const cors = require("cors");
 app.use(cors());
+
+app.use("/api/scores", scoreRoute);
+
 mongoose
   .connect(process.env.DB_URL.replace("<password>", process.env.DB_PASSWORD))
   .then(() => {
     console.log("Connected to MongoDB");
+    app.listen(PORT, () => {
+      console.log(`Listening on PORT ${PORT}`);
+    });
   })
   .catch((e) => {
     console.log(e);
   });
-
-app.use("/api/scores", scoreRoute);
-
-app.listen(PORT, () => {
-  console.log(`Listening on PORT ${PORT}`);
-});
